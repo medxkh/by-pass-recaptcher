@@ -46,3 +46,16 @@ driver.switch_to.default_content()
 frames=driver.find_element_by_xpath("/html/body/div[2]/div[4]").find_elements_by_tag_name("iframe")
 driver.switch_to.frame(frames[0])
 delay()
+
+#switch to recaptcha audio challenge frame
+driver.switch_to.default_content()
+frames= driver.find_elements_by_tag_name("iframe")
+driver.switch_to.frame(frames[-1])
+delay()
+
+#click on the play button
+driver.find_element_by_xpath("/html/body/div/div/div[3]/div/button").click()
+#get the mp3 audio file
+src = driver.find_element_by_id("audio-source").get_attribute("src")
+print("[INFO] Audio src: %s"%src)
+
